@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "prediksi-saham-dwi",
+  "private_key_id": "7670011b0e66d5cd2149be3b08c317a61c886b47",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQChMKaivFHUrRRU\nPeeU1QsOBz3Njt/bXxQp0GcZ22aeWVQ+Ayk1fZJ+whMZIV3d6HrvU5gsTk+IFZZ1\nrfs7OeveWyk5XZL5KlkzvkNZQfdZpXO4g/e51374CnHj36mrUfyTtsDcU1MM59xu\n3P6TTP2/0lyfl4Tt/zbRUI8DfBkmqFNsMQCTSndtB5Nt1VS/yApZjNMLjgFO+fr8\n1gkbfSsCG9gtKlBQCKRl0Iy95hW7TdFQ+Wx5znvK6l7pppm/GVOoxPeDftIb12JN\n9+Rz/w9jYj0wLjgyskHq1MNYC7FLQrnnED0PDdZ/50caO2rmRh/CxRtn+H8ZqQJr\nV9N2lgG7AgMBAAECggEADUhdiu56zcw/bxu00CpoIU1OdfhukPy6RCHUxSgzwhu5\nWezXwf0pi8GBYmJCAm3MZ5lbYldHrX6d6e+e0sgYnDel44DHAjpPpHhqw1mwwNXl\n/c/+I3XTFCyEKxN8v03fwupd5SoGn3shyo7yeX/wLxTuJgaN4TDVOxVo25An4GwA\nDBM9Uh3HjWIJftYLcsB3RlYff1nuTOBhIync8VJdOMk47PIqyaIWnC16RENJFOH0\nxmW5WGE59US1W7dcLtpw2Ey3gZRQILxqLgFUFhdL9e7XSKbI1lH12lHmlq6Jhkhn\n0Hvh246HypGmAXVter0QowE5ltDtXzOXDYCyN8C7lQKBgQDOfMYwbubkRNDa7aYr\n5oooEFkMtzVHNgiWnyxDoKMHF0TaWq0UK6SdEFAYlZ6mLKD1cMLa2TltK8YQiLAG\nOajx71+cGUQvvsWdRCPvLyD5USHXmE5nEFJG3Ybi6Td7Da7V3m5/YvIDPjrFeUm3\neQkifoA6b0HDEhv0zRNjPNR6FwKBgQDH10yZO4pj0UW6wiTDy4XLBTstbqieF2TR\nV+dXx9HwAQDcrfX1l5wSOV0qMn3u05Lf42m0iOCZ/JzYlfkd+bBj3qDJNcMxSAU8\nTuTONnZp0lB0yUnnybeY0dM5yKDFEwlsA7ddO9cG5b0R9z6XbWbsVypsZ9Nhdb25\nWt9FF14P/QKBgQC47Iv+MkQ8KNk3SGBqrqQKb2Gg/q8LYHvekRzuT/3RSuiR+WVK\nTC+3rjVdXxnfTta0GVGY97PzbqGKiy/B03/XdH6W6RXlAKAwUScxfW61ehCp6bBF\noxtcdebobt8OKFntFbC2CyIc/21ZD1+SniYtK0ehjaRClIRPAB6d4IuV7wKBgEYR\nBLhNGe55d1tNqppDh3txMBhzzgbv6NdFXMV4N/FQSL8W9z/OklgJaNLctS7BW6PI\nFk3IGAelfFCr9JY/70p0yicCBJgIyl0kxDBRBB+CL9dio9jy7r5UAx0lbMjsLceD\nXg0AaBnw/uOHrphlMUr4HNW5aXGoWIbeh52v3bj5AoGBAMRzZwyvpWABpykWW2/s\nXLIKu8aG7UEeXN/RRZ83WwMb1QJdeOKaRuuNfhRLfn6CU2N2dwV42zmleEyx9p7F\n989JMAOrkKU8UdloOw0acrx9fHUojYCJgbNyuPOoGKws/qDgWpUspNjtfoAtb2K0\nIBSQdPihKCAfv36h29JIU83u\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-m6bde@prediksi-saham-dwi.iam.gserviceaccount.com",
+  "client_id": "117381699991829442884",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-m6bde%40prediksi-saham-dwi.iam.gserviceaccount.com"
+}
