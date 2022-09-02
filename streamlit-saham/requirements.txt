@@ -236,4 +236,3 @@ yarg==0.1.9
 yarl==1.7.2
 yfinance==0.1.70
 zipp==3.7.0
-pypiwin32==223
