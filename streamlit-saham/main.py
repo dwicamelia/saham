@@ -423,4 +423,3 @@ if pilih == "prediksi":
         # Render plot using plotly_chart
         st.plotly_chart(fig1)
         # db.collection('data').add(df)
-     
