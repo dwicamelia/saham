@@ -43,9 +43,6 @@ firebaseConfig = {
 firebase = pyrebase.initialize_app(firebaseConfig)
 auth = firebase.auth()
 storage = firebase.storage()
-#UploadingFile
-# # storage.child("BBRI.csv").put("BBRI.JK.csv")
-# storage.child("cloudfilename").put("BBRI.png")
 
 #Database
 db = firebase.database()
@@ -60,7 +57,7 @@ password = st.sidebar.text_input('Masukkan password anda:', type= 'password')
 
 
 if choice == 'Registrasi':
-    handle = st.sidebar.text_input('Please input name', value='Default')
+    nama = st.sidebar.text_input('Please input name', value='Default')
     regis = st.sidebar.button('Buat akun')
 
     if regis:
@@ -70,10 +67,10 @@ if choice == 'Registrasi':
 
         #Regis
         user = auth.sign_in_with_email_and_password(email, password)
-        db.child(user['localId']).child("Handle").set(handle)
+        db.child(user['localId']).child("Nama").set(nama)
         db.child(user['localId']).child("ID").set(user['localId'])
         st.info("Login via login dropdown selection")
-        st.title("Wellcome\n" +handle)
+        st.title("Wellcome\n" +nama)
         st.info("Login via login dropdown selection")
     else:
         st.error('Periksa kembali email/password anda')
@@ -95,6 +92,7 @@ if choice == 'Login':
     else:      
         st.error('Harus Login dulu/Registrasi')
         st.write("Sorry, Kamu tidak memiliki akses untuk ke Menu fitur!")
+        st.block()
 
 
 ##Menu Proses Fitur####
@@ -147,15 +145,6 @@ if pilih == 'Proses file':
             df.fillna(value =-99999, inplace = True)
             df.dropna(inplace=True) # drop/hilangkan nilai yang "not a number"/NaN
 
-            # Encoding categorical data
-            # '''from sklearn.preprocessing import LabelEncoder, OneHotEncoder
-            # labelencoder = LabelEncoder()
-            # X[:, ] = labelencoder.fit_transform(X[:, ])
-            # onehotencoder = OneHotEncoder(categorical_features = [])
-            # X = onehotencoder.fit_transform(X).toarray()'''
-
-            # # # Avoiding the Dummy Variable Trap
-            # '''X = X[:, 1:]'''
         else:
             st.info(
             f"""
@@ -269,7 +258,7 @@ if pilih == "prediksi":
     end_date = st.date_input("Tanggal Akhir", datetime.datetime.now())
     today = datetime.datetime.now()
 
-    stocks = st.text_input("Input Kode Saham : CONTOH : BMRI.JK (Bank Mandiri)", 'BMRI.JK') # 
+    stocks = st.text_input("Input Kode Saham : CONTOH : BMRI.JK (Bank Mandiri)", 'BMRI.JK')
     menu = ["Dataset","Model Linear Regresion"]
     pilih = st.selectbox("Model Prediksi", menu)
     Data = yf.download(stocks, country='indonesia', start = start_date , end = end_date)
@@ -278,8 +267,6 @@ if pilih == "prediksi":
     df = pd.DataFrame(data=Data)
     df.to_csv(''+stocks+'.csv')
     if(df.empty):
-            # ts = TimeSeries(key='N6A6QT6IBFJOPJ70',output_format='pandas')
-            # Data, meta_data = ts.get_daily_adjusted(symbol='NSE:'+quote, outputsize='full')
             #Format df
             # Last 2 yrs rows => 502, in ascending order => ::-1
             Data=data.head(503).iloc[::-1]
@@ -295,11 +282,6 @@ if pilih == "prediksi":
             df['Volume']=data['6. volume']
             df.to_csv(''+stocks+'.csv',index=False)
             st.write(df)
-            #add-Db
-            filename=(stocks)
-            cloudfilename=(df)
-            storage.child(cloudfilename).put(df)
-            db.child("Data-saham").push(df)
         # return
 
     if pilih == "Dataset":
@@ -353,7 +335,7 @@ if pilih == "prediksi":
         plt2.plot(y_test_pred,label='Predicted Price')
         
         plt2.legend(loc=4)
-        plt2.savefig('LR.png')
+        # plt2.savefig('LR.png')
         plt2.close(fig)
         st.pyplot(fig)
         rmse=mean_squared_log_error(y_test, y_test_pred)
@@ -407,19 +389,38 @@ if pilih == "prediksi":
     #grafik prediksi
         st.title('Trend Grafik Harga saham\n' + stocks)
         Data['Close'].plot()
-        # Data['HasilPrediksi'].plot(data_new)
         Data['HasilPrediksi'].plot()
-
-        st.set_option('deprecation.showPyplotGlobalUse', False)
-        qf = cf.QuantFig(Data, legend='top',  name=stocks)  
-        fig1 = qf.iplot(asFigure=True, dimensions=(800, 600), fill=True)
-        
         plt.suptitle("Saham", name=stocks)
         plt.xlabel("Date")
         plt.ylabel("Harga Rp.")
         plt.legend()	    
-        st.pyplot()
-        plt.show()    
+        st.pyplot(plt)
+        plt.show()
+        plt.savefig(''+stocks+'.png') 
+
+        st.set_option('deprecation.showPyplotGlobalUse', False)
+        qf = cf.QuantFig(Data, legend='top',  name=stocks)  
+        fig1 = qf.iplot(asFigure=True, dimensions=(800, 600), fill=True)
         # Render plot using plotly_chart
         st.plotly_chart(fig1)
-        # db.collection('data').add(df)
+
+        # convert df to json in db
+        # df = df.to_json()
+        user = auth.sign_in_with_email_and_password(email, password)
+        data = stocks
+        #csv
+        csv = (''+stocks+'.csv')
+        saham = csv
+        #picture grafik
+        pict = (''+stocks+'.png') 
+        # convert Prediksi to json in db
+        forecast_setInString = str(forecast_set)  # float -> str
+        print(type(forecast_setInString))  # str
+        prediksi= forecast_setInString
+        db.child(user['localId']).child("Data").set(data)
+        db.child(user['localId']).child("Datasaham").set(saham)
+        db.child(user['localId']).child("Prediksi").set(prediksi)
+        db.child(user['localId']).child("Grafik").set(pict)
+        #SaveFile Database
+        storage.child(''+stocks+'.png').put(pict)
+        storage.child(''+stocks+'.csv').put(saham)
