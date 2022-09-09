@@ -236,3 +236,5 @@ yarg==0.1.9
 yarl==1.7.2
 yfinance==0.1.70
 zipp==3.7.0
+xlrd==2.0.1
+openpyxl==3.0.10
