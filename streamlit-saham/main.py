@@ -254,8 +254,9 @@ if pilih == 'Proses file':
     ###Prediksi harga
 if pilih == "prediksi":
         ### Read csv
+        saham = storage.child("list_saham.xlsx").get_url("gs://prediksi-saham-dwi.appspot.com")
         st.header("Daftar Nama dan Kode Saham Perusahaan")
-        kd_saham = pd.read_excel("./list_saham.xlsx")
+        kd_saham = pd.read_excel(saham)
         st.write(kd_saham)
 
 
