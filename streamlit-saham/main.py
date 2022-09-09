@@ -255,7 +255,7 @@ if pilih == 'Proses file':
 if pilih == "prediksi":
         ### Read csv
         st.header("Daftar Nama dan Kode Saham Perusahaan")
-        kd_saham = pd.read_excel('list_saham.xlsx')
+        kd_saham = pd.read_excel("./list_saham.xlsx")
         st.write(kd_saham)
 
 
